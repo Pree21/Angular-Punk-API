@@ -8,7 +8,7 @@ Directly open index.html file in Mozilla Firefox browser.
 
 
 The live link below:
-
+https://pree21.github.io/Angular-Punk-API/
 
 
 
