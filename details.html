@@ -1,0 +1,53 @@
+<md-dialog class="details" aria-label="Beer (List)">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 style="text-transform:capitalize">{{objBeer.name}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon class="md-24" aria-label="Close dialog">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-list layout="row" layout-wrap>
+          <md-list-item class="md-3-line m-b-20" flex layout layout-xs="column">
+            <img ng-src="{{objBeer.image_url}}" class="ctAvatar" />
+            <div class="md-list-item-text" layout="column">
+              <p class="decsript">{{objBeer.description}} </p>
+              <h5 md-colors="{color:'accent-A400'}">
+                ABV: {{objBeer.abv}}
+              </h5>
+            </div>
+          </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
+        <div flex-xs="100" flex-sm="100" flex-gt-sm="33" layout layout-xs="column">
+          <div class="list" flex>
+            <md-subheader class="md-no-sticky">HOPS</md-subheader>
+            <md-list-item class="secondary-button-padding" id="hop.id" ng-repeat="hop in objBeer.ingredients.hops">
+              <p>{{hop.name}}</p>
+              <md-button class="md-raised md-accent" ng-click="changeState(hop,objBeer.method.mash_temp)">{{hop.state}}</md-button>
+            </md-list-item>
+          </div>
+          <div class="list" flex>
+            <md-subheader class="md-no-sticky">MALTS</md-subheader>
+            <md-list-item class="secondary-button-padding" ng-repeat="malt in objBeer.ingredients.malt">
+              <p>{{malt.name}}</p>
+            </md-list-item>
+          </div>
+          <div class="list" flex>
+            <md-subheader class="md-no-sticky">METHODS</md-subheader>
+            <md-list-item class="secondary-button-padding">
+              <p class="m-b-10">Fermentation value : {{objBeer.method.fermentation.temp.value}}</p>
+            </md-list-item>
+            <md-list-item class="secondary-button-padding">
+              <p>Fermentation unit : {{objBeer.method.fermentation.temp.unit}}</p>
+            </md-list-item>
+          </div>
+        </div>
+      </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>

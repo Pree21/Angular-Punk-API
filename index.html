@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="beerApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Brewdog Beer Challenge</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+    <link href="resources/css/app.css" rel="stylesheet">
+</head>
+
+<body layout ng-controller="webController" ng-cloak>
+    <div flex layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                Beers
+            </div>
+        </md-toolbar>
+        <md-content>
+            <div class="container" layout-xs="column" layout="row" layout-wrap>
+                <div flex-xs="100" flex-sm="50" flex-gt-sm="33" layout ng-repeat="beer in beers" class="repeatAnimation">
+                    <md-card flex>
+                        <div class="card-image-container" layout layout-align="center center">
+                            <img src="{{beer.image_url}}" class="md-card-image" alt="Beer Image">
+                        </div>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline br-headline">{{beer.name}}</span>
+                                <span class="md-subhead desc block-with-text">{{beer.description}}</span>
+                                <p class="md-caption topics" md-colors="{color:'primary-A400'}">
+                                    ABV: {{beer.abv}}
+                                </p>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-divider></md-divider>
+                        <md-card-actions ng-controller="DialogController" class="card-nav-row" layout="row" layout-align="center center">
+                            <md-button class="md-raised md-accent" ng-click="showAdvanced($event, beer)">Details</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+
+            </div>
+        </md-content>
+    </div>
+    <!-- Loader -->
+    <div class="loadingDiv" ng-show="loading" layout layout-align="center center">
+        <md-progress-circular class="md-accent md-hue-1" md-mode="indeterminate" md-diameter="50"></md-progress-circular>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+    <script src="resources/js/controller/app.js"></script>
+    <script src="resources/js/service/dataService.js"></script>
+    <script src="resources/js/controller/details.js"></script>
+</body>
+
+</html>
