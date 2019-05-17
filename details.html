@@ -26,9 +26,10 @@
         <div flex-xs="100" flex-sm="100" flex-gt-sm="33" layout layout-xs="column">
           <div class="list" flex>
             <md-subheader class="md-no-sticky">HOPS</md-subheader>
-            <md-list-item class="secondary-button-padding" id="hop.id" ng-repeat="hop in objBeer.ingredients.hops">
-              <p>{{hop.name}}</p>
-              <md-button class="md-raised md-accent" ng-click="changeState(hop,objBeer.method.mash_temp)">{{hop.state}}</md-button>
+            <md-list-item class="secondary-button-padding" id={{objBeer.ingredients.hops.id}} ng-repeat="hop in objBeer.ingredients.hops">
+              <p>{{hop.name}}<sup>{{hop.duration}}</sup></p>
+              <md-button class="md-raised md-accent" ng-disabled="!hop.isDisabled || !hop.duration" ng-click="changeState(hop)">
+                {{hop.state}}</md-button>
             </md-list-item>
           </div>
           <div class="list" flex>
